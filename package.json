@@ -19,10 +19,17 @@
     "make": "electron-forge make"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "axios": "^1.6.4",
     "electron-squirrel-startup": "^1.0.0",
-    "electron-updater": "^6.1.1"
+    "electron-updater": "^6.1.1",
+    "framer-motion": "^10.18.0",
+    "mapbox-gl": "^3.0.1",
+    "react-map-gl": "^7.1.7"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.2.0",
