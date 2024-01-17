@@ -10,16 +10,15 @@ function Controles2({ resultados, onSelectPoint }) {
           key={incidencia.incidenceId}
           data={incidencia}
           onSelectPoint={onSelectPoint}
-          buttonProps={buttonProps}
+          
         />
       ))}
     </div>
   );
 }
 const buttonStyle = {
-  display: 'flex',
   flexDirection: 'column', // Esto coloca los botones en una fila vertical
-  alignItems: 'stretch', // Esto permite que los botones ocupen todo el ancho del contenedor
+  
 };
 
 const buttonProps = {

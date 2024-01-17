@@ -90,7 +90,7 @@ function Mapa({ resultados }) {
             'pk.eyJ1IjoibWlsa3lraXdpIiwiYSI6ImNscTB4c3NjbTAzNzcyanFpam8wbTgyanIifQ.KMVbExqE-wQwpkcHxJKxrQ'
           }
           initialViewState={startingPoint}
-          style={{ width: 1000, height: 600 }}
+          style={{ width: '100%', height: '100%' }}
           mapStyle="mapbox://styles/milkykiwi/clqb6kbnt009y01qv2sat065i"
 
         >{resultados?.map((result) => (

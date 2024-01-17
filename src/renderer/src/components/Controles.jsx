@@ -3,7 +3,7 @@ import { Button } from '@chakra-ui/react';
 
 function Controles({ resultados, onSelectPoint }) {
  
-  const opciones = ['Incidencias', 'Crear incidencia', 'Avisos', 'Informes'];
+  const opciones = ['Incidencias', 'Crear incidencia', 'Alertas', 'Informes'];
 
   return (
     <div >
