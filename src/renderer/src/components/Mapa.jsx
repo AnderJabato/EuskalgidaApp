@@ -2,15 +2,15 @@ import { useRef, useCallback } from 'react'
 import React from 'react'
 import Map, { Marker, Source, Layer } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import Controles from './Controles'
-import Controles2 from './Controles2'
+import Controles from './Menu'
+import Controles2 from './ListadoIncidencias'
 import Header from './Header'
 
 
 
 
-function Mapa({ resultados }) {
-  const mapRef = useRef()
+function Mapa({ resultados, mapRef} ) {
+  // const mapRef = useRef()
   const onSelectPoint = useCallback(({ longitude, latitude }) => {
     console.log(longitude, latitude)
     mapRef.current?.flyTo({ center: [longitude, latitude], zoom: 12, duration: 2000 })
@@ -78,11 +78,6 @@ function Mapa({ resultados }) {
   }
   return (
     <div className='maincontenedor'>
-      <Header className="header" />
-      <div className='contenedor'>
-        <Controles />
-        <Controles2 resultados={resultados} onSelectPoint={onSelectPoint} />
-
         <Map
           ref={mapRef}
           minZoom={7}
@@ -90,7 +85,7 @@ function Mapa({ resultados }) {
             'pk.eyJ1IjoibWlsa3lraXdpIiwiYSI6ImNscTB4c3NjbTAzNzcyanFpam8wbTgyanIifQ.KMVbExqE-wQwpkcHxJKxrQ'
           }
           initialViewState={startingPoint}
-          style={{ width: '100%', height: '100%' }}
+          
           mapStyle="mapbox://styles/milkykiwi/clqb6kbnt009y01qv2sat065i"
 
         >{resultados?.map((result) => (
@@ -99,8 +94,8 @@ function Mapa({ resultados }) {
               <Layer {...capaIncidencias} />
             </Source>
           </div>
-        ))}</Map>
-      </div>
+        ))}
+        </Map>
     </div>
 
   )

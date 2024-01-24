@@ -1,21 +1,16 @@
 .maincontenedor {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-top: 50px;
+    height: 100%;
+    width: 2000px;
 }
 
 .header {
     height: 50px;
     width: 100%;
     background-color: rgb(0, 123, 255);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
     display: flex;
     justify-content: center;/* Centrar horizontalmente */
     align-items: center;/* Centrar verticalmente */
-    margin-bottom: 10px;
+    
 }
 
 .header p {
@@ -23,20 +18,12 @@
     /* Color blanco para el texto */
 }
 
-.contenedor {
+.test {
     display: flex;
-    width: 100%;
-
+    background-color: rgb(249, 251, 253);
+    
 }
 
-.contenedor.controles {
-    flex: 1;
-}
-
-.contenedor.controles2 {
-    flex: 1;
-}
-
-.contenedor.map {
-    flex: 3;
+.seccionIncidencias {
+    display: flex;      
 }

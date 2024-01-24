@@ -5,7 +5,10 @@ import axios from 'axios'
 import Incidencia from './components/Incidencia'
 import Mapa from './components/Mapa'
 import data from  './data.json'
-
+import SeccionIncidencias from './components/SeccionIncidencias'
+import Header from './components/Header'
+import Menu from './components/Menu'
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [traficoData, setTraficoData] = useState(null)
@@ -31,7 +34,12 @@ function App() {
 
   return (
     <div >
-      <Mapa resultados={traficoData} />
+      <Header />
+      <div className='test'>
+        <Menu /> 
+        {/* <SeccionIncidencias resultados={traficoData} />  */}
+        <Outlet></Outlet>
+      </div>
     </div>
   )
 }

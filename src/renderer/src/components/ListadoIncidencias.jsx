@@ -1,10 +1,10 @@
 import React from 'react';
 import Incidencia from './Incidencia';
 
-function Controles2({ resultados, onSelectPoint }) {
+function ListadoIncidencias({ resultados, onSelectPoint }) {
 
   return (
-    <div style={buttonStyle}>
+    <div >
       {resultados?.map((incidencia) => (
         <Incidencia
           key={incidencia.incidenceId}
@@ -16,12 +16,6 @@ function Controles2({ resultados, onSelectPoint }) {
     </div>
   );
 }
-const buttonStyle = {
-  flexDirection: 'column', // Esto coloca los botones en una fila vertical
-  
-};
 
-const buttonProps = {
-  width: '100%',
-};
-export default Controles2;
+
+export default ListadoIncidencias;
