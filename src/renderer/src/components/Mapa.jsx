@@ -1,20 +1,14 @@
-import { useRef, useCallback } from 'react'
-import React from 'react'
-import Map, { Marker, Source, Layer } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import Controles from './Menu'
-import Controles2 from './ListadoIncidencias'
-import Header from './Header'
+import { useCallback } from 'react'
+import Map, { Layer, Source } from 'react-map-gl'
 
-
-
-
-function Mapa({ resultados, mapRef} ) {
+function Mapa({ resultados, mapRef }) {
   // const mapRef = useRef()
   const onSelectPoint = useCallback(({ longitude, latitude }) => {
     console.log(longitude, latitude)
     mapRef.current?.flyTo({ center: [longitude, latitude], zoom: 12, duration: 2000 })
   }, [])
+
   //4. Crear geoJSON
   const geoJSON = {
     type: 'FeatureCollection',
@@ -25,7 +19,7 @@ function Mapa({ resultados, mapRef} ) {
         coordinates: [parseFloat(result.longitude), parseFloat(result.latitude)]
       },
       properties: {
-        incidenceId: result.incidenceId,//cambiar result por incidencia
+        incidenceId: result.incidenceId, //cambiar result por incidencia
         incidenceType: result.incidenceType,
         autonomousRegion: result.autonomousRegion,
         province: result.province,
@@ -41,6 +35,7 @@ function Mapa({ resultados, mapRef} ) {
       }
     }))
   }
+
   const colorMapping = {
     Verde: '#7CD127',
     Blanco: '#FFFFFF',
@@ -48,6 +43,7 @@ function Mapa({ resultados, mapRef} ) {
     Rojo: '#FF5E42',
     Negro: '#000000'
   }
+
   const capaIncidencias = {
     id: 'point',
     type: 'circle',
@@ -72,32 +68,30 @@ function Mapa({ resultados, mapRef} ) {
   }
   const startingPoint = {
 
-    latitude: "43.20105",
-    longitude: "-2.10282",
+    latitude: '43.20105',
+    longitude: '-2.10282',
     zoom: 9
   }
   return (
-    <div className='maincontenedor'>
-        <Map
-          ref={mapRef}
-          minZoom={7}
-          mapboxAccessToken={
-            'pk.eyJ1IjoibWlsa3lraXdpIiwiYSI6ImNscTB4c3NjbTAzNzcyanFpam8wbTgyanIifQ.KMVbExqE-wQwpkcHxJKxrQ'
-          }
-          initialViewState={startingPoint}
-          
-          mapStyle="mapbox://styles/milkykiwi/clqb6kbnt009y01qv2sat065i"
-
-        >{resultados?.map((result) => (
+    <div className="maincontenedor">
+      <Map
+        ref={mapRef}
+        minZoom={7}
+        mapboxAccessToken={
+          'pk.eyJ1IjoibWlsa3lraXdpIiwiYSI6ImNscTB4c3NjbTAzNzcyanFpam8wbTgyanIifQ.KMVbExqE-wQwpkcHxJKxrQ'
+        }
+        initialViewState={startingPoint}
+        mapStyle="mapbox://styles/milkykiwi/clqb6kbnt009y01qv2sat065i"
+      >
+        {resultados?.map((result) => (
           <div key={result.incidenceId}>
             <Source id="incidencias-data" type="geojson" data={geoJSON}>
               <Layer {...capaIncidencias} />
             </Source>
           </div>
         ))}
-        </Map>
+      </Map>
     </div>
-
   )
 }
 

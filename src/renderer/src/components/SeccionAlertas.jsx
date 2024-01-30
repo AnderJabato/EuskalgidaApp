@@ -1,8 +1,8 @@
 import React from 'react'
-
+import ListadoAlertas from './ListadoAlertas'
 function SeccionAlertas() {
   return (
-    <div>SeccionAlertas</div>
+    <ListadoAlertas/>
   )
 }
 
