@@ -11,13 +11,18 @@ function SeccionIncidencias() {
     async function fetchTrafico() {
       // El endpoint de la API que queremos llamar, en este caso la última página de incidentes
       const apiUrl = 'https://api.euskadi.eus/traffic/v1.0/incidences?_page=1'
+      const bbddUrl = 'http://localhost:3002/api/incidencia'
   
       try {
-        // realiza la llamada a la API
+        // realiza la llamada a la API Oen Data
         const response = await axios.get(apiUrl)
         const data = response.data
+        const responseBBDD = await axios.get(bbddUrl)
+        const dataBBDD = responseBBDD.data
+        console.log(dataBBDD)
         console.log(data.incidences)
         setTraficoData(data.incidences)
+
       } catch (error) {
         console.error('Error fetching data:', error)
       }

@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import 'mapbox-gl/dist/mapbox-gl.css'
-
+import { v4 as uuidv4 } from 'uuid';
 function SeccionCrear() {
   const [tipoIncidencia, setTipoIncidencia] = useState('');
   const [provincia, setProvincia] = useState('');
   const [latitud, setLatitud] = useState('');
   const [longitud, setLongitud] = useState('');
   const [fechaInicio, setFecha] = useState('');
+
 //   o Meteorológica
 // o Accidente
 // o Retención
@@ -18,9 +19,10 @@ function SeccionCrear() {
 // o Pruebas deportivas
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const randomId = uuidv4();
   //se presiona al pulsar eniviar
   const nuevaIncidencia ={
-    idIncidencia : "idIncidencia",
+    idIncidencia : randomId,
     tipoIncidencia : tipoIncidencia,
     fechaInicio : fechaInicio,
     provincia : provincia,
@@ -29,7 +31,7 @@ function SeccionCrear() {
 
   }
   try {
-    const respuesta = await axios.post("https://localhost:3000/api/incidencia", nuevaIncidencia)
+    const respuesta = await axios.post("http://localhost:3002/api/incidencia", nuevaIncidencia)
   } catch (error) {
     console.log(error)
   }
