@@ -16,22 +16,21 @@ function Mapa({ resultados, mapRef }) {
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [parseFloat(result.longitude), parseFloat(result.latitude)]
+        coordinates: [parseFloat(result.longitud), parseFloat(result.latitud)]
       },
       properties: {
-        incidenceId: result.incidenceId, //cambiar result por incidencia
-        incidenceType: result.incidenceType,
-        autonomousRegion: result.autonomousRegion,
-        province: result.province,
-        carRegistration: result.car,
-        cause: result.cause,
-        cityTown: result.cityTown,
-        startDate: result.startDate,
-        incidenceLevel: result.incidenceLevel,
-        road: result.road,
-        pkStart: result.pkStart,
-        pkEnd: result.pkEnd,
-        direction: result.direction
+        incidenceId: result.idIncidencia, //cambiar result por incidencia
+        incidenceType: result.tipoIncidencia,
+        autonomousRegion: result.regionAutonoma,
+        province: result.provincia,
+        //carRegistration: registroVehiculo,
+        cityTown: result.ciudad,
+        startDate: result.fechaInicio,
+        incidenceLevel: result.nivelIncidencia,
+        //road: result.road,
+        //pkStart: result.pkStart,
+        //pkEnd: result.pkEnd,
+        //direction: result.direction
       }
     }))
   }
@@ -77,6 +76,7 @@ function Mapa({ resultados, mapRef }) {
       <Map
         ref={mapRef}
         minZoom={7}
+        style={{ width: '100%', height: '100%' }}
         mapboxAccessToken={
           'pk.eyJ1IjoibWlsa3lraXdpIiwiYSI6ImNscTB4c3NjbTAzNzcyanFpam8wbTgyanIifQ.KMVbExqE-wQwpkcHxJKxrQ'
         }

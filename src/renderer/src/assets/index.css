@@ -25,7 +25,19 @@
 }
 
 .seccionIncidencias {
-    display: flex;      
+    display: flex; 
+    flex-flow: column;      
+}
+.incidenciasA {
+  display: flex;
+  padding: 16px;
+  align-items: center;
+}
+.incidenciasB {
+  padding: 16px;
+  display: flex;
+  height: 800px;
+
 }
 .seccionCamaras {
     display: flex;      
@@ -69,4 +81,57 @@
 
 .boton-enviar:hover {
   background-color: #0056b3;
+}
+
+
+
+/* index.css */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajusta esto según tus necesidades */
+  background-color: #b3e0ff; /* Color de fondo azul claro */
+}
+
+form {
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  margin: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 20px; /* Espaciado debajo de cada input/select */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #604caf; /* Color verde para el botón */
+  /* color: rgb(255, 255, 255); */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+button:hover {
+  background-color: #45a049;
+}
+.scrollIncidencias {
+  height: 800px;
+  overflow-y: scroll;
+  border: 1px solid #868686;
+  padding: 16px;
 }

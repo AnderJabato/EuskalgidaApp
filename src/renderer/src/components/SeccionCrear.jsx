@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { v4 as uuidv4 } from 'uuid';
+import { Button } from '@chakra-ui/react';
 function SeccionCrear() {
   const [tipoIncidencia, setTipoIncidencia] = useState('');
   const [provincia, setProvincia] = useState('');
@@ -58,9 +59,9 @@ const handleLongitudChange = (e) =>{
   console.log( longitud);
 }
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
-      <label>
+      <label form onSubmit={handleSubmit}>
         Tipo incidencia:
         <select value={tipoIncidencia} onChange={handleChange}>
           <option value="">Selecciona...</option>
@@ -87,7 +88,7 @@ const handleLongitudChange = (e) =>{
         Fecha de inicio:
         <input type="text" value={fechaInicio} onChange={handleFechaChange} />
       </label>
-      <p> {fechaInicio}</p>
+      
       <label>
         Latitud:
         <input type="text" value={latitud} onChange={handleLatitudeChange} />
@@ -96,7 +97,9 @@ const handleLongitudChange = (e) =>{
         Longitud:
         <input type="text" value={longitud} onChange={handleLongitudChange} />
       </label>
-      <button type="submit">Enviar</button>
+      <Button colorScheme='blue' type='submit'>
+          Enviar
+        </Button>
     </form>
     </div>
   )
