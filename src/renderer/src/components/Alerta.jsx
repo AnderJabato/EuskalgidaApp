@@ -1,15 +1,28 @@
 import { Button } from '@chakra-ui/react';
 import React from 'react';
+import axios from 'axios';
+
 
 function Alerta({alerta}) {
-  const handleClick = (punto) => {
+  const handleClick = async () => {
+    const urlAlerta = `http://localhost:3002/api/incidencia/${alerta.idIncidencia}`
+  
+    try {
+      const respuesta = await axios.put(urlAlerta,  {
+        "incidenciaValidada": 1
+        })
+      console.log(respuesta)
+    } catch (error) {
+      console.log(error) 
+    }
+   
   };
-  console.log(alerta)
+  
   return (
     <div>
-      <p>{alerta?.provincia}{' '}{alerta?.ciudad}</p>
+      <p>{alerta?.nombreIncidencia}</p>
       <p>{alerta?.tipoIncidencia}</p>
-      <Button colorScheme='green'>
+      <Button colorScheme='green' onClick={handleClick}>
           Validar
       </Button>
     </div>

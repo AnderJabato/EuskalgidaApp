@@ -7,7 +7,8 @@ function Incidencia({ data, onSelectPoint, borrar }) {
   };
   return (
     <div>
-      <p>{data?.provincia}{': '}{data?.ciudad}</p>
+      <p>{data?.nombreIncidencia}</p>
+      {data?.incidenciaValidada ? (<p>validada</p>) : (<p>no validada</p>)}
       <p>{data?.tipoIncidencia}</p>
       <p>{data?.fechaInicio}</p>
       {data.latitude !== "0.0" && (
