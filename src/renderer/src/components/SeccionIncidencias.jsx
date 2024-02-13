@@ -7,9 +7,21 @@ import Mapa from './Mapa';
 import ListadoIncidencias from './ListadoIncidencias';
 import axios from 'axios';
 import { Button } from '@chakra-ui/react';
+import EditarIncidencia from './EditarIncidencia';
+
+
 function SeccionIncidencias() {
     const [traficoData, setTraficoData] = useState(null)
     const [hora, setHora] = useState(null)
+    const [modal, setModal]= useState(false)
+    const [incidencia, setIncidencia] = useState("")
+    const manejarModal = (idIncidencia)=>{
+      setModal(!modal); 
+      setIncidencia(idIncidencia)
+      console.log(modal)
+      console.log(idIncidencia)
+    }
+    
     async function fetchTrafico() {
       // El endpoint de la API que queremos llamar, en este caso la última página de incidentes
       const apiUrl = 'https://api.euskadi.eus/traffic/v1.0/incidences?_page=1'
@@ -41,7 +53,15 @@ function SeccionIncidencias() {
     }, [])
   return (
     <div className='seccionIncidencias'>
-
+      {modal && (<div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={manejarModal}>
+              &times;
+            </span>
+            <EditarIncidencia/>
+          </div>
+        </div>
+      )}
       <div className='incidenciasA'>
         <p>última hora de los datos: {hora}</p>
         <Button onClick={fetchTrafico}>
@@ -49,7 +69,7 @@ function SeccionIncidencias() {
         </Button>
       </div>
       <div className='incidenciasB'>
-        <ListadoIncidencias resultados={traficoData} onSelectPoint={onSelectPoint} />
+        <ListadoIncidencias resultados={traficoData} onSelectPoint={onSelectPoint} manejarModal={manejarModal} />
         <Mapa resultados={traficoData} mapRef={mapRef} />
       </div>
     </div>

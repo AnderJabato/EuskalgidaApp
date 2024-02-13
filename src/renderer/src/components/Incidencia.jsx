@@ -1,14 +1,14 @@
 import { Button } from '@chakra-ui/react';
 import React from 'react';
 
-function Incidencia({ data, onSelectPoint, borrar }) {
+function Incidencia({ data, onSelectPoint, borrar, editar, manejarModal }) {
   const handleClick = (punto) => {
     onSelectPoint(punto);
   };
   return (
     <div>
       <p>{data?.nombreIncidencia}</p>
-      {data?.incidenciaValidada ? (<p>validada</p>) : (<p>no validada</p>)}
+      {data?.incidenciaValidada ? (<p className='validada'>validada</p>) : (<p className='novalidad'>no validada</p>)}
       <p>{data?.tipoIncidencia}</p>
       <p>{data?.fechaInicio}</p>
       {data.latitude !== "0.0" && (
@@ -19,8 +19,11 @@ function Incidencia({ data, onSelectPoint, borrar }) {
         </div>
       )}
       <div style={{ marginBottom: '10px' }}>
-        <Button colorScheme='blue' onClick={() => borrar(data.idIncidencia)}>
+        <Button colorScheme='red' onClick={() => borrar(data.idIncidencia)}>
           Borrar
+        </Button>
+        <Button colorScheme='green' onClick={() => manejarModal(data.idIncidencia)}>
+          Editar
         </Button>
       </div>
     </div>
